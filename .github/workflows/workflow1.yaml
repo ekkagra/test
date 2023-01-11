@@ -1,0 +1,21 @@
+name: Workflow1
+
+on:
+  push:
+    branches:
+      - master
+  workflow_dispatch:
+
+jobs:
+  checkout_code:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          repository: ekkagra/room_manage
+      - run: |
+          git log --graph --oneline > log.txt
+      - uses: actions/upload-artifact@v3
+        with:
+          name: log_artifact
+          path: log.txt
