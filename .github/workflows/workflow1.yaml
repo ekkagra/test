@@ -16,9 +16,11 @@ jobs:
       - run: |
           git log --graph --oneline > log.txt
       - run: |
+          tar -cvf log.tar log.txt
+      - run: |
           docker -h
           docker version
       - uses: actions/upload-artifact@v3
         with:
           name: log_artifact
-          path: log.txt
+          path: log.tar
