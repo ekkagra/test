@@ -1,0 +1,27 @@
+name: "Build Image Action"
+description: "generic action for building job"
+inputs:
+  docker-image-name:
+    required: true
+    default: "sample_image"
+  docker-image-tag:
+    required: true
+    default: "latest"
+  docker-file-path:
+    required: true
+    default: ""
+  docker-file_name:
+    required: true
+    default: "Dockerfile"
+outputs:
+runs:
+  using: "composite"
+  steps:
+    - id: step1
+      run: |
+        cd "${{ inputs.docker-file-path }}"
+        echo "docker build -t ${{ inputs.docker-image-name }}:${{ inputs.docker-image-tag }} -f {{ inputs.docker-file_name }} ."
+        echo "docker save -o image1.tar ${{ inputs.docker-image-name }}:${{ inputs.docker-image-tag }}
+        touch image1.tar
+    - run: echo image1.tar >> $GITHUB_OUTPUT
+      id: step2
