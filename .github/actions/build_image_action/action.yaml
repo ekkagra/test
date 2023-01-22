@@ -26,6 +26,6 @@ runs:
         echo "docker save -o image1.tar ${{ inputs.docker-image-name }}:${{ inputs.docker-image-tag }}"
         touch image1.tar
       shell: bash
-    - run: echo "image-tar-name=image1.tar">> $GITHUB_OUTPUT
+    - run: echo "image-tar-name=$(realpath ./image1.tar)">> $GITHUB_OUTPUT
       id: step2
       shell: bash
