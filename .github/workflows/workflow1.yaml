@@ -19,13 +19,16 @@ jobs:
           path: test
       - run: |
           find .
+      - run: pwd
       - id: build-step
         uses: ./test/.github/actions/build_image_action
         with:
           docker-image-name: 'jarvis'
           docker-image-tag: 'v1.0.0'
           docker-file-path: './room_manage/docker'
-          docker-file_name: 'Dockerfile'
+          docker-file-name: 'Dockerfile'
+      - run: pwd
+      - run: ls -l
       - uses: actions/upload-artifact@v3
         with:
           name: image_artifact
