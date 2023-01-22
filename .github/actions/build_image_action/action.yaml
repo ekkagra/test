@@ -15,7 +15,7 @@ inputs:
     default: "Dockerfile"
 outputs:
   image-tar-name: 
-    value: ${{ steps.step2.outputs.image-tar-name }}
+    value: ${{ steps.step1.outputs.image-tar-name }}
 runs:
   using: "composite"
   steps:
@@ -25,9 +25,8 @@ runs:
         echo "docker build -t ${{ inputs.docker-image-name }}:${{ inputs.docker-image-tag }} -f ${{ inputs.docker-file-name }} ."
         echo "docker save -o image1.tar ${{ inputs.docker-image-name }}:${{ inputs.docker-image-tag }}"
         touch image1.tar
+        pwd; ls -l
+        echo "image-tar-name=$(realpath ./image1.tar)">> $GITHUB_OUTPUT
       shell: bash
     - run: pwd; ls -l
-      shell: bash
-    - run: echo "image-tar-name=$(realpath ./image1.tar)">> $GITHUB_OUTPUT
-      id: step2
       shell: bash
