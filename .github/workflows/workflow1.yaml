@@ -20,7 +20,7 @@ jobs:
       - run: |
           find .
       - id: build-step
-        uses: ./test/github/actions/build_image_action
+        uses: ./test/.github/actions/build_image_action
         with:
           docker-image-name: 'jarvis'
           docker-image-tag: 'v1.0.0'
