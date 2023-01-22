@@ -18,7 +18,7 @@ jobs:
         with:
           path: test
       - run: |
-          tree
+          find .
       - id: build-step
         uses: ./test/github/actions/build_image_action
         with:
