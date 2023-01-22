@@ -17,7 +17,10 @@ jobs:
       - uses: actions/checkout@v3
         with:
           path: test
-      - run: ls -l
+      - run: |
+          ls -l
+          ls -l room_mange
+          ls-l test
       - id: build-step
         uses: ./test/github/actions/build_image_action
         with:
