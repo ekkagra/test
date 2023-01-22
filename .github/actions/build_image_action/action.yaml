@@ -10,7 +10,7 @@ inputs:
   docker-file-path:
     required: true
     default: ""
-  docker-file_name:
+  docker-file-name:
     required: true
     default: "Dockerfile"
 outputs:
@@ -22,7 +22,7 @@ runs:
     - id: step1
       run: |
         cd "${{ inputs.docker-file-path }}"
-        echo "docker build -t ${{ inputs.docker-image-name }}:${{ inputs.docker-image-tag }} -f {{ inputs.docker-file_name }} ."
+        echo "docker build -t ${{ inputs.docker-image-name }}:${{ inputs.docker-image-tag }} -f ${{ inputs.docker-file-name }} ."
         echo "docker save -o image1.tar ${{ inputs.docker-image-name }}:${{ inputs.docker-image-tag }}"
         touch image1.tar
       shell: bash
