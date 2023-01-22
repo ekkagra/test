@@ -27,6 +27,7 @@ runs:
         touch image1.tar
       shell: bash
     - run: pwd; ls -l
+      shell: bash
     - run: echo "image-tar-name=$(realpath ./image1.tar)">> $GITHUB_OUTPUT
       id: step2
       shell: bash
