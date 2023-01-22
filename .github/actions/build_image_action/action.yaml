@@ -23,7 +23,7 @@ runs:
       run: |
         cd "${{ inputs.docker-file-path }}"
         echo "docker build -t ${{ inputs.docker-image-name }}:${{ inputs.docker-image-tag }} -f {{ inputs.docker-file_name }} ."
-        echo "docker save -o image1.tar ${{ inputs.docker-image-name }}:${{ inputs.docker-image-tag }}
+        echo "docker save -o image1.tar ${{ inputs.docker-image-name }}:${{ inputs.docker-image-tag }}"
         touch image1.tar
     - run: echo "image-tar-name=image1.tar">> $GITHUB_OUTPUT
       id: step2
