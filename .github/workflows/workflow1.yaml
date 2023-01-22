@@ -10,16 +10,17 @@ jobs:
   checkout_code:
     runs-on: ubuntu-latest
     steps:
+      - run: pwd; ls -l
       - uses: actions/checkout@v3
         with:
           repository: ekkagra/room_manage
           path: room_manage
+      - run: pwd; ls -l
       - uses: actions/checkout@v3
         with:
           path: test
-      - run: |
-          find .
-      - run: pwd
+      - run: pwd; ls -l
+      - run: find .
       - id: build-step
         uses: ./test/.github/actions/build_image_action
         with:
@@ -32,15 +33,4 @@ jobs:
       - uses: actions/upload-artifact@v3
         with:
           name: image_artifact
-          path: $$ {{ steps.build-step.outputs.image-tar-name }}
-      - run: |
-          git log --graph --oneline > log.txt
-      - run: |
-          tar -cvf log.tar log.txt
-      - run: |
-          docker -h
-          docker version
-      - uses: actions/upload-artifact@v3
-        with:
-          name: log_artifact
-          path: log.tar
+          path: ${{ steps.build-step.outputs.image-tar-name }}
