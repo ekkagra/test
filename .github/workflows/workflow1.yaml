@@ -18,9 +18,8 @@ jobs:
         with:
           path: test
       - run: |
-          ls -l
-          ls -l room_manage
-          ls-l test
+          apt install tree
+          tree
       - id: build-step
         uses: ./test/github/actions/build_image_action
         with:
