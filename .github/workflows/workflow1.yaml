@@ -18,7 +18,6 @@ jobs:
         with:
           path: test
       - run: |
-          apt install tree
           tree
       - id: build-step
         uses: ./test/github/actions/build_image_action
