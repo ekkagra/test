@@ -19,7 +19,7 @@ jobs:
           path: test
       - run: |
           ls -l
-          ls -l room_mange
+          ls -l room_manage
           ls-l test
       - id: build-step
         uses: ./test/github/actions/build_image_action
