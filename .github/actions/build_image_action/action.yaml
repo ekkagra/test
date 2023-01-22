@@ -28,3 +28,4 @@ runs:
       shell: bash
     - run: echo "image-tar-name=image1.tar">> $GITHUB_OUTPUT
       id: step2
+      shell: bash
